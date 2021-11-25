@@ -42,4 +42,4 @@ if __name__ == '__main__':
     solution = heuristic(instance)
 
     print('Cost of solution:', compute_path_cost(instance, solution))
-    print('Solution found by heuristic:', solution)
+    print('Solution found by heuristic:', 1 + np.array(solution))
