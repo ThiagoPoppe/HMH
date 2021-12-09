@@ -1,11 +1,6 @@
-import numpy as np
 from sys import argv
 from utils import InstanceReader
-from utils.heuristics import (
-    nearest_neighbors,
-    compute_solution_cost,
-    local_search_2opt
-)
+from utils.heuristics import variable_neighborhood_descent
 
 if __name__ == '__main__':
     if len(argv) < 2:
@@ -15,11 +10,6 @@ if __name__ == '__main__':
     reader = InstanceReader(argv[1])
     graph = reader.build_complete_graph()
 
-    solution = nearest_neighbors(graph)
-    cost = compute_solution_cost(graph, solution)
-    print('Solution (NN):', solution)
-    print('Cost (NN):', cost)
-
-    solution, cost = local_search_2opt(graph, solution, cost)
-    print('\nSolution (2-OPT):', solution)
-    print('Cost (2-OPT):', cost)
+    solution, cost = variable_neighborhood_descent(graph)
+    print('Cost:', cost)
+    print('Solution:', solution)

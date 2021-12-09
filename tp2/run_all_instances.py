@@ -1,4 +1,5 @@
 import time
+from tqdm import tqdm
 from glob import glob
 from utils import InstanceReader
 from utils.heuristics import variable_neighborhood_descent
@@ -8,7 +9,7 @@ if __name__ == '__main__':
     files.extend(glob('tsp_instances/EUC_2D/*.tsp'))
 
     print('instância,número de cidades,tempo de execução,custo da solução (VND),distância utilizada')
-    for filename in files:
+    for filename in tqdm(files):
         reader = InstanceReader(filename)
         graph = reader.build_complete_graph()
 
